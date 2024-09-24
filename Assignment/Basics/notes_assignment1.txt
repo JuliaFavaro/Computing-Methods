@@ -1,0 +1,50 @@
+INTROSPECTION ON PYTHON
+-the documentation and the code need to be in the same in the place /folder
+-the documentation is usually embeded in the code-> doc string
+------------------------------
+
+GENERAL IDEA OF A PYTHON CODE:
+-importing in alphabetical order in 3 different blocks
+
+-Python Standard Library
+-third party modules
+-my modules
+
+-definition of all the functions with relative doc strings
+
+-if __name__='__main__'-> code that needs to be executed from terminal
+
+
+CODING CONVENTIONS:
+Python Enhancement Proposal -> PEP 8:
+------------------
+
+--help:
+Proget name
+Description of the project
+positional argument (in the is a dash dash  it's an optional argument)
+
+options  (it doesn't happen by default but you need to specify)
+
+-------------------------------------------------------------------------------------------------------
+#how to put your code on your repository in github (-> check your repository workflow on your notebook)
+
+touch file.py (creates a file with git from ubuntu terminal)
+git status-> it will tell you which things are not tracked by github
+git add file.py -> adds to the tracking
+git commit -m "message you want to give to the public when opening your repository"
+git push-> cope and paste my token (that will last one year and that is on a file on home called "github token"
+
+-------------------------------------------
+if you want the run_time of a specific code
+import time (standard library?)
+
+start_time=time.time() #this is the number of seconds that have passed from the first one in the seventies
+elapsed_time=time.time()-start_time  #lots of significant cypher
+
+----------------------------------------------------------------------------------------------------------
+
+
+
+
+
