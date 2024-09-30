@@ -9,6 +9,13 @@ preudo-random number with an arbitrary distribution.
 (In practice, start with something easy, like a triangular distribution---the
 initial debug will be easier if you know exactly what to expect.)
 
+Spline: piecewise continous function with k polynominals with k-1 derivatives continous
+Derivatives and integrals can be calculated exactly by means of elementary arithmetic operations
+
+When you already have a physical model you should use a fitting
+Otherwise an interpolation is great with a spline
+
+Using splines also helps with inverting function because it is defined piecewise.
 
 --- Specifications
 - the signature of the constructor should be __init__(self, x, y), where

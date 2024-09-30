@@ -15,18 +15,14 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
-"""Core logic for the pdf definition.
-"""
+"""Core logic for the pdf definition."""
 
-
-import numpy as np
-from scipy.interpolate import InterpolatedUnivariateSpline
 from matplotlib import pyplot as plt
-from scipy.optimize import curve_fit
+import numpy as np
+from scipy.interpolate import InterpolatedUnivariateSpline #class import
 
 
-
-class ProbabilityDensityFunction(InterpolatedUnivariateSpline):
+class ProbabilityDensityDistribution(InterpolatedUnivariateSpline): #EREDITARY, this is a Spline, not Composition
 
     """Class describing a probability density function.
 
@@ -37,47 +33,32 @@ class ProbabilityDensityFunction(InterpolatedUnivariateSpline):
 
     y : array-like
         The array of y values to be passed to the pdf.
-
-    k : int
-        The order of the splines to be created.
     """
 
-    def __init__(self, x, y, k=3):
-        """Constructor.
-        """
-        # Normalize the pdf, if it is not.
-        norm = InterpolatedUnivariateSpline(x, y, k=k).integral(x[0], x[-1])
-        y /= norm
-        super().__init__(x, y, k=k) #we are calling the constructor of the class and from this point on self is the spline
-        ycdf = np.array([self.integral(x[0], xcdf) for xcdf in x]) #vectorization that substitute a for loop
-        self.cdf = InterpolatedUnivariateSpline(x, ycdf, k=k)
-        # Need to make sure that the vector I am passing to the ppf spline as
-        # the x values has no duplicates---and need to filter the y
-        # accordingly.
-        xppf, ippf = np.unique(ycdf, return_index=True) # checking invertability of the function
-        yppf = x[ippf]
-        self.ppf = InterpolatedUnivariateSpline(xppf, yppf, k=k) #i am switching the x and the y of the cdf as to invert and obtaining ppf
+    def __init__(self, x, y):
+        """Constructor."""
+        spline= InterpolatedUnivariateSpline(x,y) #this exists only in the constructor because there is no self
+        norm=spline.integral(x.min(), x.max())
+        self._x=x #private variable because I don't want it to change from outside my class
+        self._y=y/norm
+        super().__init__(self._x,self._y) #check again the definition of super()
 
-    def prob(self, x1, x2):
-        """Return the probability for the random variable to be included
-        between x1 and x2.
+    def plot(self):
+        plt.plot(self._x, self._y, 'o')
+        x=np.linspace(self._x.min(), self._x.max(),250)
+        plt.plot(x, self(x)) #check ext parameters
 
-        Parameters
-        ----------
-        x1: float or array-like
-            The left bound for the integration.
+    def normalization(self):
+        return self.integral(self._x.min(), self._x.max())
 
-        x2: float or array-like
-            The right bound for the integration.
-        """
-        return self.cdf(x2) - self.cdf(x1)
+#this is the first phase of coding: test driven development
+if __name__=='__main__':
+    x=np.linspace(0., 1., 10)
+    y=np.exp(x)
+    pdf=ProbabilityDensityDistribution(x,y)
 
-    def rnd(self, size=1000):
-        """Return an array of random values from the pdf.
-
-        Parameters
-        ----------
-        size: int
-            The number of random numbers to extract.
-        """
-        return self.ppf(np.random.uniform(size=size))
+    #note that changing to composition to hereditary did not change anything of the interface
+    x0=0.5
+    print(f'Real value {np.exp(x0)}, Interpolated {pdf(x0)}') #you can do this thanks to the special method __call__ implemented in the Spline class
+    pdf.plot()
+    plt.show()
