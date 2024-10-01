@@ -22,7 +22,7 @@ import numpy as np
 from scipy.interpolate import InterpolatedUnivariateSpline #class import
 
 
-class ProbabilityDensityDistribution(InterpolatedUnivariateSpline): #EREDITARY, this is a Spline, not Composition
+class ProbabilityDensityDistribution(InterpolatedUnivariateSpline): #INHERITANCE, this **is** a Spline, not Composition
 
     """Class describing a probability density function.
 
@@ -37,18 +37,25 @@ class ProbabilityDensityDistribution(InterpolatedUnivariateSpline): #EREDITARY, 
 
     def __init__(self, x, y):
         """Constructor."""
-        spline= InterpolatedUnivariateSpline(x,y) #this exists only in the constructor because there is no self
+        spline= InterpolatedUnivariateSpline(x,y) #this exists only in the constructor because there is no self at the beginning
         norm=spline.integral(x.min(), x.max())
         self._x=x #private variable because I don't want it to change from outside my class
         self._y=y/norm
-        super().__init__(self._x,self._y) #check again the definition of super()
+        #The reason we use super is so that child classes that may be using  multiple inheritance
+        #it will call the correct next parent class function in the Method Resolution Order (MRO).
+        super().__init__(self._x,self._y) 
 
     def plot(self):
+        '''This function will plot on the screen both the points given 
+        and the interpolation'''
+        print(f'Calling {self.__class__.__name__}.plot()...')
         plt.plot(self._x, self._y, 'o')
         x=np.linspace(self._x.min(), self._x.max(),250)
-        plt.plot(x, self(x)) #check ext parameters
+        plt.plot(x, self(x))
 
     def normalization(self):
+        '''Úseful function for normalization for distributions
+        like the exponential one'''
         return self.integral(self._x.min(), self._x.max())
 
 #this is the first phase of coding: test driven development
