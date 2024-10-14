@@ -10,11 +10,15 @@ class Reading:
     """"Small container class representing a single voltage reading"""
     timestamp:float #i eliminated the constructor, this will input the attributes to the class
     adc:float
-
+    
+    _CONVERSION_SLOPE=1.653 
+    _CONVERSION_OFFSET=0.456
+    
+    @staticmethod
     def voltage(adc):
         '''function read lines in the file and converts 
         ADC counts to a physical voltage in V'''
-        return 1.653*adc+ 0.456
+        return Reading._CONVERSION_SLOPE*adc+ Reading._CONVERSION_OFFSET
     
     #i also eliminated the __str__ special method
     

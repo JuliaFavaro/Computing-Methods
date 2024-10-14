@@ -1,6 +1,6 @@
 import math
-
-from voltage import Reading #always import the file you want to test
+#always import the file you want to test, this works only if the Module is in the same folder
+from voltage import Reading 
 
 def test_reading(timestamp=1., adc=12.):
     """ """
@@ -11,10 +11,7 @@ def test_reading(timestamp=1., adc=12.):
 def test_reading_conversion(timestamp=1., adc=12.):
     """ """
     r=Reading(timestamp, adc)
-    expect=adc* r._CONVERSION_SLOPE+ r._CONVERSION_OFFSET
+    assert math.isclose(r.voltage(),Reading._adc_to_voltage(adc))
 
-    assert math.isclose(r.voltage(),expect)
-
-#add this to our global variables inside Reading
-   # _CONVERSION_SLOPE=1.653 
-   # _CONVERSION_OFFSET=0.456
+#then use pytest to run this test on terminal 
+#use GitHub Actions to automatize the test
