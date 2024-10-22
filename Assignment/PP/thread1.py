@@ -6,7 +6,7 @@ def task1():
 	print("ID of process running task 1: "+str(os.getpid())) 
 def task2(): 
 	print("Task 2 assigned to thread: "+threading.current_thread().name) 
-	print("ID of process running task 2: "+str(os.getpid())) 
+	print("ID of process running task 2: "+str(os.getpid()))  #same id
 #MAIN
 if __name__=="__main__":
         # print ID of current process 

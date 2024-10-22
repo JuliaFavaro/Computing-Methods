@@ -173,6 +173,8 @@ for i in range(N):
 print(nums) 
 benchmark(nums)
 
-#if you have two threads it's way more efficient than two threads (of a factor 2)
-#if you have 4 core CPU (4 processors) the execution time in 4 processes or 8 processes is basically the same
-#you can bypass the GIl by using external C code with numpy
+# if you have two threads, ci mette leggermente di più della riga seriale
+# if you have 4 core CPU (4 processors) the execution time in 4 processes or 8 processes is basically the same
+# tra processi e threads c'è un fattore 2 di velocità
+# c'è un tempo iniziale dato dal primo lancio che è totalmente indipendente dal numero di processi che lanciamo
+# you can bypass the GIl by using external C code with numpy
