@@ -29,4 +29,4 @@ for x in range(10):
 
 #every run they are accessing to a different balanced shared because they are always working with whatever the other process has done to the shared memory -> the result is randomic
 
-# we need to ensure that two concurrent processes do not execute at the same time a particular program segment
+# we need to ensure that two concurrent processes do not execute at the same time a particular program segment-> race condition

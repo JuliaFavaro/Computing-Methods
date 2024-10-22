@@ -1,6 +1,8 @@
 from multiprocessing import Process
 import os
 
+#check: remember that if you write on the terminal ps-> you will get all the process that are playing at the same time 
+#emacs: lancia processi che vanno in background
 def f0(name):
     print()
     print("-----> function "+name)
@@ -19,7 +21,7 @@ def f2(name):
     print()
     print("-----> function "+name)
     print ("I am still the first sub-process with ID "
-           +str(os.getpid())+" my father is ID:"+str(os.getppid())) #its father is f1 though
+           +str(os.getpid())+" my father is ID:"+str(os.getppid())) #father will always be the father of f1: the bash terminal
     print("This is the end!")
 
 #MAIN

@@ -29,4 +29,18 @@ if __name__=="__main__":
 #Every time you run this code, the position  number order changes. The order of what process finishes before changes for every run
 #You cannot rely on the order for writing the dependency in an algorithm
 
-#Are these process run on different corses assigned as resources by the VM?
+"""
+However, the final order in which the results are printed is determined by the order in which they are retrieved from the Queue.
+Since the Queue preserves the order in which items were put, the results will always reflect the order of pos values 
+as they were put into the queue by the Hello function.
+
+In your code:
+
+    You start four processes.
+
+    Each process puts its result into the queue with a unique pos value.
+
+    You retrieve the results from the queue in the same order the processes put them in, ensuring the printed result reflects this order.
+
+    
+"""

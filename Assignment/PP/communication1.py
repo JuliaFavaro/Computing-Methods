@@ -24,3 +24,4 @@ if __name__=="__main__":
     print("Result(in main program): "+str(result)) 
         
 #you will see that result is still empty  in the main while it's been filled in the process
+#this is because they have no memory shared 

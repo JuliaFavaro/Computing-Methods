@@ -13,7 +13,7 @@ def square_list(mylist, result, square_sum):
 if __name__=="__main__":    
     # input list 
     mylist = [1,2,3,4] 
-    # creating Array of int data type with space for 4 integers 
+    # creating Array of int data type with space for 4 integers , right now is empty
     result = multiprocessing.Array('i', 4)  #you can define in the shell memory a shared memory
     # creating Value of int data type 
     square_sum = multiprocessing.Value('i') 

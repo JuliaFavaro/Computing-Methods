@@ -23,7 +23,7 @@ def perform_transactions():
 	# creating new processes 
 	p1 = multiprocessing.Process(target=withdraw, args=(balance,lock)) 
 	p2 = multiprocessing.Process(target=deposit, args=(balance,lock)) 
-	# starting processes 
+	# starting processes  CONCURRENT!!
 	p1.start() 
 	p2.start() 
 	# wait until processes are finished 

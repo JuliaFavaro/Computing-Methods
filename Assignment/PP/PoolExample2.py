@@ -11,7 +11,10 @@ if __name__=="__main__":
     pool = mp.Pool(processes=4)
     results = pool.map(doingstuff,range(1,10)) #sync mode
     end=time.time()
-    print("elapsed time: "+str(end-start))
+    print("elapsed time: "+str(end-start)) #nota bene, elapsed time è meno di 10 secondi, perché sono eseguiti parallelamente
     #print(results.get())
     
-    #It will print first the first 4 processes, then the next 4, then the last one. This is because the 4 processes can be launch simultaneously and only when all of them have finished the resources are available for the next quaturple.  The order in the quartuple is not fixed
+    # It will print first the first 4 processes, then the next 4, then the last one. 
+    # Note i processi sono diversi, ma sono sempre gli stessi lavori che si redistribuiscono il loro lavoro.
+    # This is because the 4 processes can be launch simultaneously and only when all of them have finished
+    # the resources are available for the next quaturple.  The order in the quartuple is not fixed

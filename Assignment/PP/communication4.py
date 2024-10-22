@@ -30,3 +30,4 @@ if __name__=="__main__":
     p2.join() 
 
 #queue is a shared memory
+#nota non sono veramente paralleli altrimenti non otterrei niente di buono
