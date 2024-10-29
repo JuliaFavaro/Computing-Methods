@@ -10,11 +10,11 @@ Draft and syllabus of this class: [Computing Methods for Experimental Physics an
 - _root_ folder: contains this README file, License file, CHANGELOG, and other general project files.
 - _Assignments_ folder: contains a walkthrough of the course. It is divided into 4 modules:
   - _Basics_ folder: containing the assignments for the first module on Basic programming methods.
-    - covers: Python language and main system modules, Python libraries for scientific computing, Tools for software management and documentation
+    - covers: Python language and main system modules, Python libraries for scientific computing, Tools for software management and documentation. Only .py programs
   - _PP_ folder: containing the assignments for the second module on Parallel Programming
-    - covers: Techniques and libraries for parallel and GPU computing
-  - _CUDA_ folder: containing the assignments for the second module on Machine Learning
-    - covers: Knowledge of fundamental concepts in machine learning and neural network development, Feed-forward networks, convolutional networks, and   recurrent networks, Generative networks (GANs and autoencoders), and graph networks. 
+    - covers: Techniques and libraries for parallel and GPU computing. Python, CUDA, C, and Jupyter Notebooks code. 
+  - _ML_ folder: containing the assignments for the second module on Machine Learning
+    - covers: Knowledge of fundamental concepts in machine learning and neural network development, Feed-forward networks, convolutional networks, and   recurrent networks, Generative networks (GANs and autoencoders), and graph networks. Only Jupyter Notebooks
   - _HEP_ folder: containing the assignments for the second module on High Energy Physics Programming tools
     - covers: Specific tools for data analysis projects and applications in particle physics
 - _Project_ folder: contains the walkthrough of my final project for the course.
